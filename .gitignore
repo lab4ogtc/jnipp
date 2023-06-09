@@ -256,3 +256,6 @@ paket-files/
 
 # Gradle
 .gradle/
+
+build/
+cmake-build-*

@@ -17,6 +17,11 @@ inline ContentResolver Context::getContentResolver() const {
         object().call<jni::Object>(Meta::data().getContentResolver));
 }
 
+inline res::AssetManager Context::getAssets() const {
+    assert(!isNull());
+    return res::AssetManager(object().call<jni::Object>(Meta::data().getAssets));
+}
+
 inline net::Uri_Builder ContentUris::appendId(net::Uri_Builder &uri_Builder,
                                               long long longParam) {
     auto &data = Meta::data(true);

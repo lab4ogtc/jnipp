@@ -9,7 +9,9 @@ namespace android::content {
 Context::Meta::Meta(bool deferDrop)
     : MetaBaseDroppable(Context::getTypeName()),
       getContentResolver(classRef().getMethod(
-          "getContentResolver", "()Landroid/content/ContentResolver;")) {
+          "getContentResolver", "()Landroid/content/ContentResolver;")),
+      getAssets(classRef().getMethod(
+                "getAssets", "()Landroid/content/res/AssetManager;")) {
     if (!deferDrop) {
         MetaBaseDroppable::dropClassRef();
     }

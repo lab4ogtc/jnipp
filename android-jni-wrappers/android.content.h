@@ -26,6 +26,20 @@ class Uri_Builder;
 
 namespace wrap {
 namespace android::content {
+namespace res {
+
+/*!
+ * Wrapper for android.content.res.AssetManager objects.
+ */
+class AssetManager : public ObjectWrapperBase {
+  public:
+    using ObjectWrapperBase::ObjectWrapperBase;
+    static constexpr const char *getTypeName() noexcept {
+        return "android/content/res/AssetManager";
+    }
+};
+} // namespace res
+
 /*!
  * Wrapper for android.content.Context objects.
  */
@@ -47,11 +61,14 @@ class Context : public ObjectWrapperBase {
      */
     ContentResolver getContentResolver() const;
 
+    res::AssetManager getAssets() const;
+
     /*!
      * Class metadata
      */
     struct Meta : public MetaBaseDroppable {
         jni::method_t getContentResolver;
+        jni::method_t getAssets;
 
         /*!
          * Singleton accessor
